@@ -35,7 +35,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-# window set
+# 窗口设定
 for_window[class=^.*] border pixel 0
 for_window[window_role="pop-up"] floating enable
 for_window[window_role="task_dialog"] floating enable
@@ -50,16 +50,17 @@ for_window[window_role="*steam*"] floating enable
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
+# start 虚拟终端
 bindsym $mod+Return exec urxvt -fg lightgray -bg black -bc -tr -tint lightgray -sh 60 -sr
 
-# start a chrome 
+# 启动google浏览器
 bindsym $mod+g exec google-chrome-stable
 
-# start thunar
+# start thunar 文件管理器
 bindsym $mod+Ctrl+h exec thunar
 
-# start $mod+Ctrl+m exec thunderbird
+# start thunderbird 邮件客户端
+bindsym $mod+Ctrl+m exec thunderbird
 
 # switch touchpod
 bindsym Ctrl+Shift+t exec . ~/.config/tp/touchpad_toggle.sh
@@ -162,14 +163,14 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# reload the configuration file
+# 重新载入文件
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# 重新启动i3
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+# 退出i3  (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
+# 调整窗口大小
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -196,13 +197,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#      status_command i3status
-#}
-
-# Start some program
+# 启动一些程序
 exec compton -b
 exec fcitx
 exec_always --no-startup-id . ~/.config/polybar/launch.sh

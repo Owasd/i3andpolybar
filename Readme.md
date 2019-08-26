@@ -3,7 +3,11 @@
 根据官方的安装指南安装好系统
 安装时 按转 base 和 base-devel 两个软件包组
 如果需要 ifconfig等命令管理网络 还需安装net-tools 包组
+
+双系统安装推荐使用refind引导软件，这个软件只能用在uefi引导的机器上
+
 ### 二、系统配置
+
 #### 网络配置
 安装 networkmanager 软件
 启动服务并设置开机自动运行
@@ -56,7 +60,7 @@ arch wiki 上有 fonts 页面
 pacman -S i3-gaps dunst rofi compton thunar 
 ```
 
-####  安装polybar 丫丫
+####  安装polybar 
 polybar需要从aur软件源安装，看文档补全依赖。也可以从archlinuxcn源安装这样更简单
 
 ### 三、美化和完善系统
@@ -67,6 +71,8 @@ nerd-fonts-complete oh-my-zsh awesome-terminal-fonts
 
 下载并导入配置文件，配置文件位置一般都位*~/.config/* 文件夹内
 
+[我的自己的配置文件](https://github.com/Owasd/i3andpolybar)
+
 完善系统
 
 ```
@@ -75,5 +81,7 @@ nerd-fonts-complete oh-my-zsh awesome-terminal-fonts
 视频播放器：vlc
 文件管理器：thunar
 aur管理软件：yay
+下载工具:uget,aria2
+
 ```
 
