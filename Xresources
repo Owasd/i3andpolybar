@@ -1,0 +1,40 @@
+Xft.dpi:96
+Xft.antialias:true
+Xft.rgba:rgb
+Xft.hinting:true
+Xft.hintstyle:hintslight
+
+URxvt.loginShell:true
+URxvt.inputMethod:fcitx
+URxvt.depth:32
+
+URxvt.mouseWheelScrollPage:true
+URxvt.scrollBar:false
+URxvt.scrollBar_floating:false
+URxvt.scrollstyle:rxvt
+URxvt.scrollTtyOutput:false
+URxvt.scrollWithBuffer:true
+URxvt.scrollTtyKeypress:true
+
+URxvt.cursorBlink:true
+URxvt.cursorUnderline:false
+
+URxvt.saveLines:100
+URxvt.borderLess:false
+
+URxvt.allow_bold:false
+URxvt.font:xft:Monaco:style=Regular:antialias=True:size=12,xft:Source Han Sans CN:style=Regular:size=12
+URxvt.boldfont:xft:Source Code Pro:style=Regular:antialias=True:size=12,xft:Source Han Sans CN:style=Regular:size=12
+
+!URxvt.inheritPixmap:false
+URxvt.transparent:false
+URxvt.shading:20
+URxvt.intensityStyles: false
+
+URxvt.perl-ext-common: default,matcher,font-size
+URxvt.url-launcher: /usr/bin/google-chrome-stable
+URxvt.matcher.button: 1
+
+!https://github.com/majutsushi/urxvt-font-size
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease

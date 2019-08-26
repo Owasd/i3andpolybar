@@ -1,0 +1,382 @@
+[colors]
+;background = ${xrdb:color0:#222}
+background = #BF000000
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+
+[bar/bar]
+monitor = ${env:MONITOR:eDP1}
+dpi = 144
+include-file = ~/.config/polybar/bar
+background = #D92E3440
+foreground = #ECEFF4
+
+
+modules-left = i3
+modules-center =
+modules-right = 
+
+
+[bar/bar2]
+monitor = ${env:MONITOR:eDP1}
+dpi = 192
+include-file = ~/.config/polybar/bar2
+background = #D92E3440
+foreground = #ECEFF4
+modules-left = music
+modules-center =
+modules-right = 
+
+[bar/fullbar]
+monitor = ${env:MONITOR:eDP1}
+dpi = 144
+include-file = ~/.config/polybar/fullbar
+background = #D92E3440
+foreground = #ECEFF4
+modules-left = backlight wlan xwindow
+modules-center = cpu memory
+modules-right = time volume eth battery poweroff
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+[module/date]
+type = internal/date
+interval = 60
+date = %a %d %b
+time = %l:%M %p
+label =    %date%      %time%
+;label =  %time%
+format-padding = 1
+
+
+[module/backlight]
+type = internal/xbacklight
+label = %percentage%%  
+label-foreground = #9955FF
+
+
+[module/battery]
+type = internal/battery
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = %{F#666}%{F#ccfafafa} <label-full>
+#label-charging-font = 3
+#label-discharing-font = 3
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+; low power alert
+ramp-capacity-0-foreground = #ff5555
+
+; it will display over the three pattern when charing
+; at a framerate 750
+; and each has a foreground color
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-2-foreground = #3eede7
+animation-charging-1-foreground = #00FFFF		
+animation-charging-0-foreground = #4169E1
+animation-charging-framerate = 750
+
+;;; CPU usage {{{
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3.0
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label><ramp-load>
+
+; Available tokens:
+;   %percentage% (default) - total cpu load averaged over all cores
+;   %percentage-sum% - Cumulative load on all cores
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = CPU %percentage%%
+;label-font = 3
+
+; Spacing between individual per-core ramps
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+; ramps for ramp-load
+ramp-load-0 = ▁
+ramp-load-1 = ▂
+ramp-load-2 = ▃
+ramp-load-3 = ▄
+ramp-load-4 = ▅
+ramp-load-5 = ▆
+ramp-load-6 = ▇
+ramp-load-7 = █
+; colors for each ramp
+ramp-load-0-foreground = #aaff77
+ramp-load-1-foreground = #aaff77
+ramp-load-2-foreground = #aaff77
+ramp-load-3-foreground = #aaff77
+ramp-load-4-foreground = #fba922
+ramp-load-5-foreground = #fba922
+ramp-load-6-foreground = #ff5555
+ramp-load-7-foreground = #ff5555
+;;; }}}
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3.0
+; Available tags:
+;   <label> (default)
+;   <bar-used>
+;   <bar-free>
+;   <ramp-used>
+;   <ramp-free>
+;   <bar-swap-used>
+;   <bar-swap-free>
+;   <ramp-swap-used>
+;   <ramp-swap-free>
+format = <label><ramp-used>
+
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+;   %percentage_swap_used%
+;   %percentage_swap_free%
+;   %mb_swap_total%
+;   %mb_swap_free%
+;   %mb_swap_used%
+;   %gb_swap_total%
+;   %gb_swap_free%
+;   %gb_swap_used%
+
+label = RAM %percentage_used%%
+;label-font = 3
+
+; Only applies if <bar-used> is used
+bar-used-indicator =
+bar-used-width = 50
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+
+; Only applies if <ramp-used> is used
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+ramp-used-0-foreground = #aaff77
+ramp-used-1-foreground = #aaff77
+ramp-used-2-foreground = #aaff77
+ramp-used-3-foreground = #aaff77
+ramp-used-4-foreground = #fba922
+ramp-used-5-foreground = #fba922
+ramp-used-6-foreground = #ff5555
+ramp-used-7-foreground = #ff5555
+
+; Only applies if <ramp-free> is used
+ramp-free-0 = ▁
+ramp-free-1 = ▂
+ramp-free-2 = ▃
+ramp-free-3 = ▄
+ramp-free-4 = ▅
+ramp-free-5 = ▆
+ramp-free-6 = ▇
+ramp-free-7 = █
+;;; }}}
+
+[module/wlan]
+type = internal/network
+interface = wlo1
+interval = 5
+label-connected = %essid%  
+label-disconnected =       
+[module/wlan2]
+inherit = module/wlan
+interface = wlp1s0
+
+[module/volume]
+type = internal/pulseaudio
+format-volume =   <ramp-volume>  <label-volume>
+format-muted = 0%  
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+format-muted-foreground = #FF0000
+[module/poweroff]
+type = custom/script
+exec = echo "    "
+click-left = rofi -modi run,drun,window -show drun
+click-right = i3lock-fancy -pg &
+click-middle = /usr/bin/rofi-logout
+format-padding = 1
+
+[module/rofi]
+type = custom/script
+exec = echo "   "
+click-left = rofi -modi run,drun,window -show drun
+format-padding = 1
+
+[module/time]
+type = internal/date
+interval = 5
+label-foreground = #b6a49b
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = #b6a49b
+;format-underline = #0a6cf5
+format-padding = 1
+label = %date% %time%
+
+[module/pkg]
+type                    = custom/script
+label                   = %output%
+tail                    = true
+label-padding           = 1
+exec                    = $HOME/.config/polybar/updates
+exec-if                 = "ping -c 1 8.8.8.8 > /dev/null"
+click-left              = urxvt --geometry 100x30 -e sudo pacman -Syyu &
+
+[module/play]
+type = custom/script
+exec = python3 ~/.config/polybar/Play.py
+format-padding = 1
+interval = 2
+format = <label>
+format-foreground = #b6a49b
+click-left = playerctl play
+click-right = playerctl pause
+
+[module/pause]
+type = custom/script
+exec = python3 ~/.config/polybar/Pause.py
+format-padding = 1
+format = <label>
+interval = 2
+format-foreground = #b6a49b
+click-left = playerctl pause
+
+[module/volume1]
+type = custom/script
+interval = 1
+label = %output%
+exec = $HOME/.config/polybar/pavolume.sh
+click-right = exec pavucontrol &
+click-left = $HOME/.config/polybar/pavolume.sh --togmute
+scroll-up = $HOME/.config/polybar/pavolume.sh --up
+scroll-down = $HOME/.config/polybar/pavolume.sh --down
+tail = true
+format-padding = 1
+
+[module/eth]
+type = internal/network
+interface = enp4s0
+interface-alt = wlo1
+interval = 3.0
+format-connected = <label-connected>
+format-connected-prefix = "  "
+format-connected-prefix-alt = "  "
+format-connected-prefix-foreground = #33FF00
+label-connected = %downspeed:9%
+label-connected-foreground = #33FF00
+format-disconnected = <label-disconnected>
+label-disconnected = "            "
+label-disconnected-foreground = #FF0000
+format-padding = 1
+
+[module/music]
+type = custom/script
+interval = 2
+label = %output:0:305:...%
+label-padding = 1
+exec = ~/.config/polybar/mpris2.sh
+click-left = playerctl pause
+click-right = playerctl play
+format-padding = 3
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+label-focused-background = ${module/bspwm.label-focused-background}
+label-focused-underline = ${module/bspwm.label-focused-underline}
+label-focused-padding = ${module/bspwm.label-focused-padding}
+
+label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+label-urgent-background = ${module/bspwm.label-urgent-background}
+label-urgent-padding = ${module/bspwm.label-urgent-padding} |
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+width = 50
+label-maxlen = 45
